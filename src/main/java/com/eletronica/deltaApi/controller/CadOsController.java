@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import java.util.UUID;
 import java.util.Iterator;
 import java.util.List;
 
@@ -45,6 +45,8 @@ public class CadOsController {
     public void doCreate(@RequestBody List<Cliente> listCliente){
         System.out.println(listCliente);
         for (Cliente c:listCliente) {
+            UUID idOne = UUID.randomUUID();
+            c.setUuid(idOne.toString());
             clienteDAO.save(c);
         }
     }
