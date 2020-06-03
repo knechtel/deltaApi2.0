@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
 import java.util.UUID;
 import java.util.Iterator;
 import java.util.List;
@@ -21,8 +23,9 @@ public class CadOsController {
     private ClienteDAO clienteDAO;
     @Autowired
     private AparelhoDAO aparelhoDAO;
-    @RequestMapping(value="cadClient",consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    public void  cadCliente(){
+
+    @RequestMapping(value = "cadClient", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    public void cadCliente() {
         Cliente c = new Cliente();
         c.setNome("Joao da Silva");
         c.setEmail("joao.silva@gmail.com");
@@ -31,24 +34,40 @@ public class CadOsController {
         clienteDAO.save(c);
     }
 
-    @RequestMapping(value="list",produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    private Iterator<Cliente> findAll(){
+    @RequestMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    private Iterator<Cliente> findAll() {
         return clienteDAO.findAll().iterator();
     }
-    @RequestMapping(value="listAparelho",produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    private Iterator<Aparelho> findAllAparelho(){
+
+    @RequestMapping(value = "listAparelho", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    private Iterator<Aparelho> findAllAparelho() {
         Iterator<Aparelho> ap = aparelhoDAO.findAll().iterator();
 
         return ap;
     }
-    @RequestMapping(value="doCreate",consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public void doCreate(@RequestBody List<Cliente> listCliente){
+
+    @RequestMapping(value = "doCreate", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public List<Cliente> doCreate(@RequestBody List<Cliente> listCliente) {
         System.out.println(listCliente);
-        for (Cliente c:listCliente) {
+
+        List<Cliente> listView = new ArrayList<Cliente>();
+        for (Cliente c : listCliente) {
             UUID idOne = UUID.randomUUID();
             c.setUuid(idOne.toString());
-            clienteDAO.save(c);
+            c = clienteDAO.save(c);
+            listView.add(c);
         }
+        return listView;
+    }
+
+    @RequestMapping(value = "doCreateAparelho", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public List<Aparelho> doCreateAparelho(@RequestBody List<Aparelho> listAparelho) {
+        List<Aparelho> lisView = new ArrayList<Aparelho>();
+        for (Aparelho a : listAparelho) {
+            a = aparelhoDAO.save(a);
+            lisView.add(a);
+        }
+        return lisView;
     }
 
 
