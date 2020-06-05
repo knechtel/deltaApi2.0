@@ -13,7 +13,7 @@ public class Aparelho implements Serializable {
     private String modelo;
     private String serial;
     private String pronto;
-    @Column(name = "idCliente")
+    private String devolucao;
     private Integer idCliente;
     private String autorizado;
     private String garantia;
@@ -129,4 +129,11 @@ public class Aparelho implements Serializable {
         this.idCliente = idCliente;
     }
 
+    public String getDevolucao() {
+        return devolucao;
+    }
+
+    public void setDevolucao(String devolucao) {
+        this.devolucao = devolucao;
+    }
 }

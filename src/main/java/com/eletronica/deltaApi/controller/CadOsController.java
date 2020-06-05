@@ -49,6 +49,18 @@ public class CadOsController {
     @RequestMapping(value = "doCreate", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public List<Cliente> doCreate(@RequestBody List<Cliente> listCliente) {
         System.out.println(listCliente);
+        List<Cliente> listView = new ArrayList<Cliente>();
+        for (Cliente c : listCliente) {
+            UUID idOne = UUID.randomUUID();
+            c.setUuid(idOne.toString());
+            c = clienteDAO.save(c);
+            listView.add(c);
+        }
+        return listView;
+    }
+    @RequestMapping(value = "doMergeCliente", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public List<Cliente> doMergeCliente(@RequestBody List<Cliente> listCliente) {
+
 
         List<Cliente> listView = new ArrayList<Cliente>();
         for (Cliente c : listCliente) {
@@ -69,6 +81,14 @@ public class CadOsController {
         }
         return lisView;
     }
-
+    @RequestMapping(value = "doMergeAparelho", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public List<Aparelho> doMergeAparelho(@RequestBody List<Aparelho> listAparelho) {
+        List<Aparelho> lisView = new ArrayList<Aparelho>();
+        for (Aparelho a : listAparelho) {
+            a = aparelhoDAO.save(a);
+            lisView.add(a);
+        }
+        return lisView;
+    }
 
 }
