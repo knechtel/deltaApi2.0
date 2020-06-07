@@ -1,5 +1,7 @@
 package com.eletronica.deltaApi.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -19,7 +21,9 @@ public class Aparelho implements Serializable {
     private String garantia;
     private String entregue;
     private String defeito_obs;
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
     private Date dataEntrada;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date dataSaida;
 
     private Double valor;

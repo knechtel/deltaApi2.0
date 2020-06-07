@@ -4,6 +4,7 @@ import com.eletronica.deltaApi.bean.Aparelho;
 import com.eletronica.deltaApi.bean.Cliente;
 import com.eletronica.deltaApi.dao.AparelhoDAO;
 import com.eletronica.deltaApi.dao.ClienteDAO;
+import com.eletronica.deltaApi.dto.AparelhoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,10 +41,14 @@ public class CadOsController {
     }
 
     @RequestMapping(value = "listAparelho", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    private Iterator<Aparelho> findAllAparelho() {
-        Iterator<Aparelho> ap = aparelhoDAO.findAll().iterator();
+    private List<AparelhoDto> findAllAparelho() {
+        List<AparelhoDto> listDTO = new ArrayList<AparelhoDto>();
 
-        return ap;
+        for (Aparelho a:aparelhoDAO.findAll()
+             ) {
+                listDTO.add(new AparelhoDto().toDTO(a));
+        }
+        return  listDTO;
     }
 
     @RequestMapping(value = "doCreate", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
@@ -82,10 +87,10 @@ public class CadOsController {
         return lisView;
     }
     @RequestMapping(value = "doMergeAparelho", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public List<Aparelho> doMergeAparelho(@RequestBody List<Aparelho> listAparelho) {
-        List<Aparelho> lisView = new ArrayList<Aparelho>();
-        for (Aparelho a : listAparelho) {
-            a = aparelhoDAO.save(a);
+    public List<AparelhoDto> doMergeAparelho(@RequestBody List<AparelhoDto> listAparelho) {
+        List<AparelhoDto> lisView = new ArrayList<AparelhoDto>();
+        for (AparelhoDto a : listAparelho) {
+           Aparelho a1 = aparelhoDAO.save(a.build(a));
             lisView.add(a);
         }
         return lisView;
