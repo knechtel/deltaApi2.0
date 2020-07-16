@@ -25,6 +25,7 @@ public class Aparelho implements Serializable {
     private Date dataEntrada;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dataSaida;
+    private String uuidCliente;
 
     private Double valor;
 
@@ -139,5 +140,21 @@ public class Aparelho implements Serializable {
 
     public void setDevolucao(String devolucao) {
         this.devolucao = devolucao;
+    }
+
+    public void setDataEntrada(Date dataEntrada) {
+        this.dataEntrada = dataEntrada;
+    }
+
+    public String getUuidCliente() {
+        return uuidCliente;
+    }
+
+    public void setUuidCliente(String uuidCliente) {
+        this.uuidCliente = uuidCliente;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 }

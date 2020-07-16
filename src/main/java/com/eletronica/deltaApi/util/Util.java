@@ -9,6 +9,8 @@ import java.util.Date;
 public class Util {
 
     public static Date toDate(String string){
+        if(string.equals("dataSaida"))
+            return null;
         Date date= null;
         try {
             date = new SimpleDateFormat("dd/MM/yyyy").parse(string);

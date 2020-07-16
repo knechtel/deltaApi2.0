@@ -16,7 +16,7 @@ public class Cliente implements Serializable {
     private String endereco;
     private String telefone;
     private String email;
-    private String uuid;
+    private String uuidCliente;
 
 
     public Integer getId() {
@@ -67,13 +67,11 @@ public class Cliente implements Serializable {
         this.email = email;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getUuidCliente() {
+        return uuidCliente;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setUuidCliente(String uuidCliente) {
+        this.uuidCliente = uuidCliente;
     }
-
-
 }

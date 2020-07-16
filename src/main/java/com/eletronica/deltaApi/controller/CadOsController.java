@@ -65,7 +65,7 @@ public class CadOsController {
     }
     @RequestMapping(value = "doMergeCliente", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public List<Cliente> doMergeCliente(@RequestBody List<Cliente> listCliente) {
-
+        System.out.println("doMarge");
 
         List<Cliente> listView = new ArrayList<Cliente>();
         for (Cliente c : listCliente) {
@@ -78,16 +78,18 @@ public class CadOsController {
     }
 
     @RequestMapping(value = "doCreateAparelho", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public List<Aparelho> doCreateAparelho(@RequestBody List<Aparelho> listAparelho) {
-        List<Aparelho> lisView = new ArrayList<Aparelho>();
-        for (Aparelho a : listAparelho) {
-            a = aparelhoDAO.save(a);
-            lisView.add(a);
+    public List<AparelhoDto> doCreateAparelho(@RequestBody List<AparelhoDto> listAparelho) {
+        System.out.println("doCreate");
+        List<AparelhoDto> lisView = new ArrayList<AparelhoDto>();
+        for (AparelhoDto a : listAparelho) {
+            Aparelho a1 = aparelhoDAO.save(a.build(a));
+            lisView.add(new AparelhoDto().toDTO(a1));
         }
         return lisView;
     }
     @RequestMapping(value = "doMergeAparelho", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public List<AparelhoDto> doMergeAparelho(@RequestBody List<AparelhoDto> listAparelho) {
+        System.out.println("doMergeAparelho");
         List<AparelhoDto> lisView = new ArrayList<AparelhoDto>();
         for (AparelhoDto a : listAparelho) {
            Aparelho a1 = aparelhoDAO.save(a.build(a));
