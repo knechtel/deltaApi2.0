@@ -1,132 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="aparelho_subrelatorio_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="77ca21a4-6582-484d-bfa8-a0566d284791">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="aparelho_subrelatorio_A4.1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="610c7225-d22b-48a8-a272-e9e2a349c322">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="maria_db"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bin/DataAdapter.xml"/>
-	<parameter name="OS_ID" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[new Integer(1);]]></defaultValueExpression>
+	<parameter name="OS" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new Integer(148)]]></defaultValueExpression>
 	</parameter>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[SELECT loja.aparelho.id,
-	loja.aparelho.nome,
-	loja.aparelho.modelo,
-	loja.aparelho.serial,
-	loja.aparelho.`id_cliente`,
-	loja.aparelho.garantia,
-	loja.aparelho.entregue,
+	loja.aparelho.autorizado,
+	loja.aparelho.data_entrada,
+	loja.aparelho.data_saida,
 	loja.aparelho.defeito_obs,
-	loja.aparelho.`data_entrada`,
-	loja.aparelho.`data_saida`,
-	 loja.aparelho.valor  
+	loja.aparelho.entregue,
+	loja.aparelho.garantia,
+	loja.aparelho.id_cliente,
+	loja.aparelho.modelo,
+	loja.aparelho.nome,
+	loja.aparelho.valor,
+	loja.aparelho.devolucao,
+	loja.aparelho.data_entrega,
+	loja.aparelho.serial
 FROM loja.aparelho
 
-where
-aparelho.id_cliente = $P{OS_ID}]]>
+where loja.aparelho.id_cliente = $P{OS}]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
 	</field>
-	<field name="nome" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+	<field name="autorizado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="autorizado"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
 	</field>
-	<field name="modelo" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="modelo"/>
+	<field name="data_entrada" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="data_entrada"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
 	</field>
-	<field name="serial" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="serial"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
-	</field>
-	<field name="id_cliente" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="id_cliente"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
-	</field>
-	<field name="garantia" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="garantia"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
-	</field>
-	<field name="entregue" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="entregue"/>
+	<field name="data_saida" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="data_saida"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
 	</field>
 	<field name="defeito_obs" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="defeito_obs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
 	</field>
-	<field name="data_entrada" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.label" value="data_entrada"/>
+	<field name="entregue" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="entregue"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
 	</field>
-	<field name="data_saida" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.label" value="data_saida"/>
+	<field name="garantia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="garantia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
+	</field>
+	<field name="id_cliente" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id_cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
+	</field>
+	<field name="modelo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="modelo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
 	</field>
 	<field name="valor" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="valor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
 	</field>
+	<field name="devolucao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="devolucao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
+	</field>
+	<field name="data_entrega" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="data_entrega"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
+	</field>
+	<field name="serial" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="serial"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aparelho"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="236" splitType="Stretch">
+		<band height="125" splitType="Stretch">
 			<textField>
-				<reportElement x="60" y="20" width="150" height="30" uuid="29810580-b50e-4de7-a012-2c5ebbbbcefc"/>
+				<reportElement x="80" y="20" width="100" height="30" uuid="689283ce-5d79-4af2-a800-11cb2b658246">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d747ddbb-b8e2-4583-ba41-69437ed62e08"/>
+				</reportElement>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="20" width="60" height="30" uuid="caa5adfe-a4f4-4eab-ad44-9e28cee9f7e4"/>
-				<text><![CDATA[Aparelho:]]></text>
+				<reportElement x="0" y="20" width="100" height="30" uuid="8594c493-b989-4bd4-ad60-6062865a8f04">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d747ddbb-b8e2-4583-ba41-69437ed62e08"/>
+				</reportElement>
+				<text><![CDATA[nome]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="60" y="50" width="150" height="30" uuid="dcd9c076-2bae-489a-a3b4-1604a1d2c0f1"/>
-				<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="50" width="60" height="30" uuid="2a99f9aa-6aa9-4f85-9521-7f63f8db7ef1"/>
-				<text><![CDATA[modelo]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="60" y="80" width="140" height="26" uuid="c91b9b17-f8ee-40ef-ad12-8e0bb5a94779"/>
-				<textFieldExpression><![CDATA[$F{serial}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="80" width="60" height="30" uuid="45547c42-6da8-4546-a899-d1318c58b267"/>
-				<text><![CDATA[serial]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="60" y="116" width="310" height="34" uuid="0db896fc-09de-449b-877c-ffa2c6bb3a56"/>
-				<textFieldExpression><![CDATA[$F{defeito_obs} == null ? "":$F{defeito_obs}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="116" width="60" height="30" uuid="a5baf399-ecee-4324-ae02-3bcad87ebf19"/>
-				<text><![CDATA[defeito_obs]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="440" y="30" width="100" height="30" uuid="ec141d7a-ac59-4281-a47f-71104d454a0f"/>
+				<reportElement x="410" y="20" width="100" height="30" uuid="80eb4420-43de-4dc4-8a5f-0a7b0705371f"/>
 				<textFieldExpression><![CDATA[$F{data_entrada}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="340" y="30" width="100" height="30" uuid="1a2c71db-e23f-46a6-a131-a2ed02f559bd"/>
-				<text><![CDATA[Data de entrada:]]></text>
+				<reportElement x="310" y="20" width="100" height="30" uuid="942aa932-6a45-4c9e-b7b7-94bf49d086a2"/>
+				<text><![CDATA[data_entrada]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="440" y="70" width="100" height="30" uuid="69e52d9e-3a4f-4c53-a6c4-f7e862c1e18c"/>
-				<textFieldExpression><![CDATA[$F{data_saida} == null ? "" :$F{data_saida}]]></textFieldExpression>
+				<reportElement x="469" y="95" width="100" height="30" uuid="67168aa1-f2b2-4f34-a4f6-ff6bd06469e9"/>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("R$ #,##0.00").format(Double.valueOf($F{valor}))]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="340" y="70" width="100" height="30" uuid="8276d20c-1d81-4395-ba53-8f507902a252"/>
-				<text><![CDATA[Data de saída:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="440" y="130" width="100" height="30" uuid="bd19d0d4-bbec-4ddd-a5da-4e308d09b9b5"/>
-				<textFieldExpression><![CDATA[new DecimalFormat("#,##0.00").format($F{valor}.doubleValue())]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="340" y="130" width="100" height="30" uuid="96cef91d-d848-4ea6-9349-c11ac3602321"/>
+				<reportElement x="369" y="95" width="100" height="30" uuid="51dec37f-10fa-4365-9ada-56bcfab7893b"/>
 				<text><![CDATA[valor]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="410" y="60" width="100" height="30" uuid="5ff146e2-85f7-4e5d-9709-fff80e8e32c5"/>
+				<textFieldExpression><![CDATA[$F{data_saida}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="60" width="100" height="30" uuid="ad8fdc50-1338-4790-97af-1f2376c30ce4"/>
+				<text><![CDATA[data_saida]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="70" width="100" height="30" uuid="29914f72-924e-4863-8e57-307353b41326"/>
+				<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="70" width="100" height="30" uuid="cc8995c5-9b80-4c03-9e8d-c8c1e03ec1aa"/>
+				<text><![CDATA[modelo]]></text>
 			</staticText>
 		</band>
 	</detail>

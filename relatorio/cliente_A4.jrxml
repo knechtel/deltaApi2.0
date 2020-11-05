@@ -9,7 +9,7 @@
 		<defaultValueExpression><![CDATA[new Integer(1)]]></defaultValueExpression>
 	</parameter>
 	<parameter name="subReport" class="java.lang.String">
-		<defaultValueExpression><![CDATA["/Users/maiquelknechtel/JaspersoftWorkspace/deltaRelatorio/aparelho_subrelatorio_A4.jasper"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["/Users/maiquelknechtel/JaspersoftWorkspace/deltaRelatorio/aparelho_subrelatorio_A4.1.jasper"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="image" class="java.lang.String">
 		<defaultValueExpression><![CDATA["/Users/maiquelknechtel/Documents/deltaApi/image/Delta-Arrow-logo.png"]]></defaultValueExpression>
@@ -18,12 +18,7 @@
 		<defaultValueExpression><![CDATA["/Users/maiquelknechtel/Documents/deltaApi/image/whatsup.jpeg"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
-		<![CDATA[SELECT loja.cliente.id,
-	loja.cliente.nome,
-	loja.cliente.cpf,
-	loja.cliente.endereco,
-	loja.cliente.telefone,
-	loja.cliente.email
+		<![CDATA[SELECT*
 FROM loja.cliente
 
 where loja.cliente.id = $P{OS}]]>
@@ -154,7 +149,13 @@ where loja.cliente.id = $P{OS}]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="272" splitType="Stretch"/>
+		<band height="322" splitType="Stretch">
+			<subreport>
+				<reportElement x="10" y="0" width="549" height="262" uuid="653c552c-64e5-43f6-a406-0639050f909c"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/Users/maiquelknechtel/JaspersoftWorkspace/deltaRelatorio/aparelho_subrelatorio_A4.1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>

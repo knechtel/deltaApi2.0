@@ -40,7 +40,7 @@ public class HelloController {
             HashMap parametros = new HashMap();
             System.out.println("teste id param = "+request.getParameter("id"));
             parametros.put("OS", new Integer(request.getParameter("id")));
-            parametros.put("OS_ID", new Integer(request.getParameter("id")));
+           // parametros.put("OS_ID", new Integer(request.getParameter("id")));
             parametros.put("image", System.getProperty("user.dir") + "/image/Delta-Arrow-logo.png");
             parametros.put("subReport", System.getProperty("user.dir") + "/relatorio/aparelho_subrelatorio_A4.jasper");
             parametros.put("whatsupImage", System.getProperty("user.dir") + "/image/whatsup.jpeg");
