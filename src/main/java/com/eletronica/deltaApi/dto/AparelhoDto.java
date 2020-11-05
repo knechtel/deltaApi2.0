@@ -21,6 +21,7 @@ public class AparelhoDto {
     private String dataEntrada;
     private String dataSaida;
     private Double valor;
+    private String uuidCliente;
 
     public Aparelho build(AparelhoDto aparelhoDto){
         Aparelho a = new Aparelho();
@@ -38,6 +39,7 @@ public class AparelhoDto {
         a.setDataEntreda(Util.toDate(aparelhoDto.getDataEntrada()));
         a.setDataSaida(Util.toDate(aparelhoDto.getDataSaida()));
         a.setValor(aparelhoDto.getValor());
+        a.setUuidCliente(aparelhoDto.getUuidCliente());
         return a;
 
     }
@@ -57,6 +59,7 @@ public class AparelhoDto {
         a.setDataEntrada(Util.dateToSring(aparelhoDto.getDataEntrada()));
         a.setDataSaida(Util.dateToSring(aparelhoDto.getDataSaida()));
         a.setValor(aparelhoDto.getValor());
+        a.setUuidCliente(aparelhoDto.getUuidCliente());
         return a;
     }
 
@@ -170,5 +173,13 @@ public class AparelhoDto {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public String getUuidCliente() {
+        return uuidCliente;
+    }
+
+    public void setUuidCliente(String uuidCliente) {
+        this.uuidCliente = uuidCliente;
     }
 }

@@ -2,9 +2,11 @@ package com.eletronica.deltaApi.controller;
 
 import com.eletronica.deltaApi.bean.Aparelho;
 import com.eletronica.deltaApi.bean.Cliente;
+import com.eletronica.deltaApi.bean.ClienteForm;
 import com.eletronica.deltaApi.dao.AparelhoDAO;
 import com.eletronica.deltaApi.dao.ClienteDAO;
 import com.eletronica.deltaApi.dto.AparelhoDto;
+import com.eletronica.deltaApi.dto.ClienteDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,8 +38,14 @@ public class CadOsController {
     }
 
     @RequestMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    private Iterator<Cliente> findAll() {
-        return clienteDAO.findAll().iterator();
+    private List<Cliente> findAll() {
+        return clienteDAO.findAllCliente();
+    }
+
+    @RequestMapping(value = "createCliente", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public ClienteDto createCliente(@RequestBody ClienteDto cliente){
+        ClienteDto clienteDto = new ClienteDto().toClienteDto(clienteDAO.save(new ClienteDto().toCliente(cliente)));
+        return clienteDto;
     }
 
     @RequestMapping(value = "listAparelho", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
@@ -56,8 +64,7 @@ public class CadOsController {
         System.out.println(listCliente);
         List<Cliente> listView = new ArrayList<Cliente>();
         for (Cliente c : listCliente) {
-            UUID idOne = UUID.randomUUID();
-            c.setUuid(idOne.toString());
+
             c = clienteDAO.save(c);
             listView.add(c);
         }
@@ -69,8 +76,8 @@ public class CadOsController {
 
         List<Cliente> listView = new ArrayList<Cliente>();
         for (Cliente c : listCliente) {
-            UUID idOne = UUID.randomUUID();
-            c.setUuid(idOne.toString());
+
+
             c = clienteDAO.save(c);
             listView.add(c);
         }
@@ -97,5 +104,24 @@ public class CadOsController {
         }
         return lisView;
     }
+    @RequestMapping(value = "createAparelho", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public AparelhoDto createAparelho(@RequestBody AparelhoDto aparelhoDto){
+        Aparelho a = aparelhoDAO.save(aparelhoDto.build(aparelhoDto));
 
+        return new AparelhoDto().toDTO(a);
+    }
+    @RequestMapping(value = "aparelhoByCliente", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public List<AparelhoDto> getAparelhosFromCliente(@RequestBody ClienteForm clienteForm){
+        List<AparelhoDto> listAparelho = new ArrayList<AparelhoDto>();
+        for(Aparelho a:aparelhoDAO.findAllByIdCliente(clienteForm.getId())){
+            listAparelho.add(new AparelhoDto().toDTO(a));
+        }
+        return listAparelho;
+    }
+    @RequestMapping(value = "aparelhoById", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public AparelhoDto getAparelho(@RequestBody AparelhoDto aparelhoDto){
+        System.out.println("pega este log  = "+aparelhoDto.getId());
+        Aparelho a = aparelhoDAO.findByIdInt(aparelhoDto.getId());
+        return new AparelhoDto().toDTO(a);
+    }
 }
