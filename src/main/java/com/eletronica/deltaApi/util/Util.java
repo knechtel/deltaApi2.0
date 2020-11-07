@@ -11,9 +11,10 @@ public class Util {
 
 
     public static Date toDate(String string){
-        if(string.equals(""))
-            return null;
+
         if(string==null)
+            return null;
+        if(string.equals(""))
             return null;
         if(string.equals("dataSaida"))
             return null;
