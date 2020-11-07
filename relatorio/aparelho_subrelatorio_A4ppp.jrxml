@@ -4,7 +4,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="maria_db"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="OS_ID" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[$P{OS_ID}]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[new Integer(148)]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT loja.aparelho.id,

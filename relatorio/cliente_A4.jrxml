@@ -6,10 +6,7 @@
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="521"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="maria_db"/>
 	<parameter name="OS" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[new Integer(1)]]></defaultValueExpression>
-	</parameter>
-	<parameter name="subReport" class="java.lang.String">
-		<defaultValueExpression><![CDATA["/Users/maiquelknechtel/JaspersoftWorkspace/deltaRelatorio/aparelho_subrelatorio_A4.1.jasper"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[$P{OS}]]></defaultValueExpression>
 	</parameter>
 	<parameter name="image" class="java.lang.String">
 		<defaultValueExpression><![CDATA["/Users/maiquelknechtel/Documents/deltaApi/image/Delta-Arrow-logo.png"]]></defaultValueExpression>
@@ -17,6 +14,10 @@
 	<parameter name="whatsupImage" class="java.lang.String">
 		<defaultValueExpression><![CDATA["/Users/maiquelknechtel/Documents/deltaApi/image/whatsup.jpeg"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="subReport" class="java.lang.String">
+		<defaultValueExpression><![CDATA["/Users/maiquelknechtel/JaspersoftWorkspace/deltaRelatorio/aparelho_subrelatorio_A4.1.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OS_ID" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT*
 FROM loja.cliente
@@ -149,11 +150,14 @@ where loja.cliente.id = $P{OS}]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="322" splitType="Stretch">
+		<band height="378" splitType="Stretch">
 			<subreport>
-				<reportElement x="10" y="0" width="549" height="262" uuid="653c552c-64e5-43f6-a406-0639050f909c"/>
+				<reportElement x="0" y="30" width="530" height="290" uuid="6ec1a1e0-65c2-4129-8dce-01ac58f947e4"/>
+				<subreportParameter name="OS_ID">
+					<subreportParameterExpression><![CDATA[$P{OS}]]></subreportParameterExpression>
+				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["/Users/maiquelknechtel/JaspersoftWorkspace/deltaRelatorio/aparelho_subrelatorio_A4.1.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{subReport}]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
