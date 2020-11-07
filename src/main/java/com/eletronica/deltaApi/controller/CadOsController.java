@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.UUID;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @RestController
 public class CadOsController {
@@ -106,7 +103,9 @@ public class CadOsController {
     }
     @RequestMapping(value = "createAparelho", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public AparelhoDto createAparelho(@RequestBody AparelhoDto aparelhoDto){
-        Aparelho a = aparelhoDAO.save(aparelhoDto.build(aparelhoDto));
+        Aparelho asetData = aparelhoDto.build(aparelhoDto);
+        asetData.setDataEntreda(new Date());
+        Aparelho a = aparelhoDAO.save(asetData);
 
         return new AparelhoDto().toDTO(a);
     }
