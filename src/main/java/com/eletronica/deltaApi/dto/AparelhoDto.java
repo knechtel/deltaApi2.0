@@ -37,6 +37,7 @@ public class AparelhoDto {
         a.setEntregue(aparelhoDto.getEntregue());
         a.setDefeito_obs(aparelhoDto.getDefeito_obs());
        // a.setDataEntreda(Util.toDate(aparelhoDto.getDataEntrada()));
+        a.setEntregue(aparelhoDto.getEntregue());
         a.setDataSaida(Util.toDate(aparelhoDto.getDataSaida()));
         a.setValor(aparelhoDto.getValor());
         a.setUuidCliente(aparelhoDto.getUuidCliente());
