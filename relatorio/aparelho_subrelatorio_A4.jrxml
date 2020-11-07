@@ -100,7 +100,7 @@ where loja.aparelho.id_cliente = $P{OS_ID}]]>
 			</staticText>
 			<textField>
 				<reportElement x="410" y="20" width="100" height="30" uuid="80eb4420-43de-4dc4-8a5f-0a7b0705371f"/>
-				<textFieldExpression><![CDATA[$F{data_entrada}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/YYY HH:mm").format($F{data_entrada})]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="310" y="20" width="100" height="30" uuid="942aa932-6a45-4c9e-b7b7-94bf49d086a2"/>
