@@ -104,7 +104,12 @@ public class CadOsController {
     @RequestMapping(value = "createAparelho", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public AparelhoDto createAparelho(@RequestBody AparelhoDto aparelhoDto){
         Aparelho asetData = aparelhoDto.build(aparelhoDto);
-        asetData.setDataEntreda(new Date());
+        if(asetData.getId()==null) {
+            asetData.setDataEntreda(new Date());
+        }else{
+            Aparelho aAux = aparelhoDAO.findByIdInt(asetData.getId());
+            asetData.setDataEntreda(aAux.getDataEntrada());
+        }
         Aparelho a = aparelhoDAO.save(asetData);
 
         return new AparelhoDto().toDTO(a);

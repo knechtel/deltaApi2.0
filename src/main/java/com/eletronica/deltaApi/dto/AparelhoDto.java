@@ -36,7 +36,7 @@ public class AparelhoDto {
         a.setGarantia(aparelhoDto.getGarantia());
         a.setEntregue(aparelhoDto.getEntregue());
         a.setDefeito_obs(aparelhoDto.getDefeito_obs());
-        a.setDataEntreda(Util.toDate(aparelhoDto.getDataEntrada()));
+       // a.setDataEntreda(Util.toDate(aparelhoDto.getDataEntrada()));
         a.setDataSaida(Util.toDate(aparelhoDto.getDataSaida()));
         a.setValor(aparelhoDto.getValor());
         a.setUuidCliente(aparelhoDto.getUuidCliente());
