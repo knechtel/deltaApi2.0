@@ -135,8 +135,12 @@ public class CadOsController {
     }
     @RequestMapping(value = "aparelhoById", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public AparelhoDto getAparelho(@RequestBody AparelhoDto aparelhoDto){
-        System.out.println("pega este log  = "+aparelhoDto.getId());
         Aparelho a = aparelhoDAO.findByIdInt(aparelhoDto.getId());
         return new AparelhoDto().toDTO(a);
+    }
+    @RequestMapping(value = "clienteById", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public ClienteDto getAparelho(@RequestBody ClienteDto clienteDto){
+        Cliente cliente = clienteDAO.findByIdInt(clienteDto.getId());
+        return  new ClienteDto().toClienteDto(cliente);
     }
 }
